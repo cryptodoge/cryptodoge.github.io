@@ -2,13 +2,14 @@ body {
 	background-color: black;
 	font-size: 17px;
 	color: white;
+	padding: 0;
 }
 
 	.panel {
 		background-color: rgb(50, 50, 50);
-		width: 300px;
+		width: 305px;
 		margin: 5px;
-		padding: 12px;
+		padding: 5px;
 		border-color: #ddd;
 	}
 
