@@ -1,20 +1,18 @@
-	body {
-		background-color: black;
-		font-size: 17px;
-		color: white;
-	}
+body {
+	background-color: black;
+	font-size: 17px;
+	color: white;
+}
 
 	.panel {
 		background-color: rgb(50, 50, 50);
+		width: 300px;
+		margin: 5px;
+		padding: 12px;
+		border-color: #ddd;
 	}
 
-	.panel-body {
-		padding-left: 10%;
-	}
 
-	.price-boxes {
-		margin-top: 20px;
-	}
 	
 	a {
 		color:white;
