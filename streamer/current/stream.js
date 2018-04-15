@@ -37,41 +37,41 @@ $(document).ready(function() {
 		}
 		currentPrice[pair]['CHANGE24HOUR'] = CCC.convertValueToDisplay(tsym, (currentPrice[pair]['PRICE'] - currentPrice[pair]['OPEN24HOUR']));
 		currentPrice[pair]['CHANGE24HOURPCT'] = ((currentPrice[pair]['PRICE'] - currentPrice[pair]['OPEN24HOUR']) / currentPrice[pair]['OPEN24HOUR'] * 100).toFixed(2) + "%";;
-		displayData(currentPrice[pair], from, tsym, fsym);
+		displayData(currentPrice[pair], from, to, tsym, fsym);
 	};
 
-	var displayData = function(current, from, tsym, fsym) {
+	var displayData = function(current, from, to, tsym, fsym) {
 		console.log(current);
 		var priceDirection = current.FLAGS;
 		for (var key in current) {
 			if (key == 'CHANGE24HOURPCT') {
-				$('#' + key + '_' + from).text(' (' + current[key] + ')');
+				$('#' + key + '_' + from + '_' + to).text(' (' + current[key] + ')');
 			}
 			else if (key == 'LASTVOLUMETO' || key == 'VOLUME24HOURTO') {
-				$('#' + key + '_' + from).text(CCC.convertValueToDisplay(tsym, current[key]));
+				$('#' + key + '_' + from + '_' + to).text(CCC.convertValueToDisplay(tsym, current[key]));
 			}
 			else if (key == 'LASTVOLUME' || key == 'VOLUME24HOUR' || key == 'OPEN24HOUR' || key == 'OPENHOUR' || key == 'HIGH24HOUR' || key == 'HIGHHOUR' || key == 'LOWHOUR' || key == 'LOW24HOUR') {
-				$('#' + key + '_' + from).text(CCC.convertValueToDisplay(fsym, current[key]));
+				$('#' + key + '_' + from + '_' + to).text(CCC.convertValueToDisplay(fsym, current[key]));
 			}
 			else {
-				$('#' + key + '_' + from).text(current[key]);
+				$('#' + key + '_' + from + '_' + to).text(current[key]);
 			}
 		}
 
 		$('#PRICE_' + from).removeClass();
 		if (priceDirection & 1) {
-			$('#PRICE_' + from).addClass("up");
+			$('#PRICE_' + from + '_' + to).addClass("up");
 		}
 		else if (priceDirection & 2) {
-			$('#PRICE_' + from).addClass("down");
+			$('#PRICE_' + from + '_' + to).addClass("down");
 		}
 		if (current['PRICE'] > current['OPEN24HOUR']) {
-			$('#CHANGE24HOURPCT_' + from).removeClass();
-			$('#CHANGE24HOURPCT_' + from).addClass("up");
+			$('#CHANGE24HOURPCT_' + from + '_' + to).removeClass();
+			$('#CHANGE24HOURPCT_' + from + '_' + to).addClass("up");
 		}
 		else if (current['PRICE'] < current['OPEN24HOUR']) {
-			$('#CHANGE24HOURPCT_' + from).removeClass();
-			$('#CHANGE24HOURPCT_' + from).addClass("down");
+			$('#CHANGE24HOURPCT_' + from + '_' + to).removeClass();
+			$('#CHANGE24HOURPCT_' + from + '_' + to).addClass("down");
 		}
 	};
 });
