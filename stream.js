@@ -21,9 +21,9 @@ $(document).ready(function() {
 	var chart = $('#container').highcharts();
 	// console.log('chart: ' + chart);
 	// window.setInterval(addData($('#container').highcharts().series[0], getRndInteger(1,20)), 2000);
-	addData($('#container').highcharts().series[0], 20);
-	addData($('#container').highcharts().series[0], 30);
-	addData($('#container').highcharts().series[0], 40);
+	// addData($('#container').highcharts().series[0], 20);
+	// addData($('#container').highcharts().series[0], 30);
+	// addData($('#container').highcharts().series[0], 40);
 });
 
 function displayData(current, from, to, tsym, fsym) {
