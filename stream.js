@@ -114,7 +114,7 @@ function square(containerId) {
 				type: 'all',
 				text: 'All'
 			}],
-			selected: 2
+			selected: 3
 		},
 
 		yAxis: {
