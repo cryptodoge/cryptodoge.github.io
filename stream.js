@@ -18,12 +18,12 @@ $(document).ready(function() {
 
 	square('container');
 
-	// var chart = $('#container').highcharts();
+	var chart = $('#container').highcharts();
 	// console.log('chart: ' + chart);
-	// addData($('#container').highcharts().series[0], 10);
-	// addData($('#container').highcharts().series[0], 20);
-	// addData($('#container').highcharts().series[0], 30);
-	// addData($('#container').highcharts().series[0], 40);
+	// window.setInterval(addData($('#container').highcharts().series[0], getRndInteger(1,20)), 2000);
+	addData($('#container').highcharts().series[0], 20);
+	addData($('#container').highcharts().series[0], 30);
+	addData($('#container').highcharts().series[0], 40);
 });
 
 function displayData(current, from, to, tsym, fsym) {
@@ -98,7 +98,8 @@ function square(containerId) {
 		},
 
 		rangeSelector: {
-			selected: 4
+			allButtonsEnabled: true,
+			selected: 1
 		},
 
 		yAxis: {
@@ -136,4 +137,8 @@ function square(containerId) {
 
 function addData(series, data) {
 	series.addPoint([new Date().getTime(), data], true, false);
+}
+
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
 }
