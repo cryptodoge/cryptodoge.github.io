@@ -140,14 +140,26 @@ function square(containerId) {
 }
 
 function addData(series, market, price) {
+	seriaExists = checkExistsSeria(series, market);
+	if (seriaExists)
+		series.forEach(function(seria) {
+			if (seria.name === market)
+				seria.addPoint([new Date().getTime(), price], true, false);
+		});
+	else {
+		series.push({
+			name: market,
+			data: [
+				[new Date().getTime(), price]
+			]
+		});
+	}
+}
+
+function checkExistsSeria(series, name) {
+	result = false;
 	series.forEach(function(seria) {
-		if (seria.name === market)
-			seria.addPoint([new Date().getTime(), price], true, false);
-		else{
-			series.push({
-				name: market,
-				data: [[new Date().getTime(), price]]
-			});
-		}
-	});
+		if (seria.name === name) result true;
+	})
+	return result;
 }
