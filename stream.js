@@ -18,15 +18,15 @@ $(document).ready(function() {
 
 	square('container');
 
-	// addData($('#container').highcharts(), 'tratatat', 10);
-	// addData($('#container').highcharts(), 'tratatat', 20);
-	// addData($('#container').highcharts(), 'ad', 15);
-	// addData($('#container').highcharts(), 'tratatat', 20);
-	// addData($('#container').highcharts(), 'tratatat', 7);
-	// addData($('#container').highcharts(), 'ad', 17);
-	// addData($('#container').highcharts(), 'tratatat', 3);
-	// addData($('#container').highcharts(), 'tratatat', 14);
-	// addData($('#container').highcharts(), 'ad', 5);
+	addData($('#container').highcharts(), 'tratatat', 10);
+	addData($('#container').highcharts(), 'tratatat', 20);
+	addData($('#container').highcharts(), 'ad', 15);
+	addData($('#container').highcharts(), 'tratatat', 20);
+	addData($('#container').highcharts(), 'tratatat', 7);
+	addData($('#container').highcharts(), 'ad', 17);
+	addData($('#container').highcharts(), 'tratatat', 3);
+	addData($('#container').highcharts(), 'tratatat', 14);
+	addData($('#container').highcharts(), 'ad', 5);
 
 });
 
@@ -164,8 +164,9 @@ function addData(chart, market, price) {
 }
 
 function checkExistsSeria(series, name) {
+	result = false;
 	series.forEach(function(seria) {
-		if (seria.name == name) return true;
+		if (seria.name == name) result = true;
 	})
-	return false;
+	return result;
 }
