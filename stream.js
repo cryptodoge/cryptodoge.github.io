@@ -17,6 +17,13 @@ $(document).ready(function() {
 	});
 
 	square('container');
+
+	// var chart = $('#container').highcharts();
+	// console.log('chart: ' + chart);
+	// addData($('#container').highcharts().series[0], 10);
+	// addData($('#container').highcharts().series[0], 20);
+	// addData($('#container').highcharts().series[0], 30);
+	// addData($('#container').highcharts().series[0], 40);
 });
 
 function displayData(current, from, to, tsym, fsym) {
@@ -42,10 +49,12 @@ function displayData(current, from, to, tsym, fsym) {
 	}
 
 	if (from === 'BTC' && to === 'USD')
-		addData($('#container').highcharts().series[0], {
-			name: current['LASTMARKET'],
-			data: [new Date().getTime(), current['PRICE']]
-		});
+		addData($('#container').highcharts().series[0], current['PRICE']);
+
+	// addData($('#container').highcharts().series[0], {
+	// 	name: current['LASTMARKET'],
+	// 	data: [new Date().getTime(), current['PRICE']]
+	// });
 
 	if (current['PRICE'] > current['OPEN24HOUR']) {
 		$('#CHANGE24HOURPCT_' + from + '_' + to).removeClass();
@@ -81,8 +90,6 @@ function dataUnpack(data) {
 	currentPrice[pair]['CHANGE24HOURPCT'] = ((currentPrice[pair]['PRICE'] - currentPrice[pair]['OPEN24HOUR']) / currentPrice[pair]['OPEN24HOUR'] * 100).toFixed(2) + "%";
 	displayData(currentPrice[pair], from, to, tsym, fsym);
 };
-
-var seriesOptions = [];
 
 function square(containerId) {
 	Highcharts.stockChart(containerId, {
@@ -120,10 +127,13 @@ function square(containerId) {
 			split: true
 		},
 
-		series: seriesOptions
+		series: [{
+			name: 'tratata',
+			data: []
+		}]
 	});
 }
 
 function addData(series, data) {
-	series.addPoint([series.length, data], true, false);
+	series.addPoint([new Date().getTime(), data], true, false);
 }
