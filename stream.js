@@ -1,5 +1,4 @@
 $(document).ready(function() {
-	var currentPrice = {};
 	var socket = io.connect('https://streamer.cryptocompare.com/');
 	//Format: {SubscriptionId}~{ExchangeName}~{FromSymbol}~{ToSymbol}
 	//Use SubscriptionId 0 for TRADE, 2 for CURRENT and 5 for CURRENTAGG
@@ -56,6 +55,8 @@ function displayData(current, from, to, tsym, fsym) {
 		$('#CHANGE24HOURPCT_' + from + '_' + to).addClass("down");
 	}
 };
+
+var currentPrice = {};
 
 function dataUnpack(data) {
 	var from = data['FROMSYMBOL'];
