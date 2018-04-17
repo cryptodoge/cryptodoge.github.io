@@ -42,7 +42,7 @@ function displayData(current, from, to, tsym, fsym) {
 	}
 
 	if (from === 'BTC' && to === 'USD')
-		addData($('#container').series[0], {
+		addData($('#container').highcharts().series[0], {
 			name: current['LASTMARKET'],
 			data: [new Date().getTime(), current['PRICE']]
 		});
