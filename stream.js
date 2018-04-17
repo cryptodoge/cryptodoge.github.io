@@ -18,7 +18,7 @@ $(document).ready(function() {
 
 	square('container');
 
-	var chart = $('#container').highcharts();
+	// var chart = $('#container').highcharts();
 	// console.log('chart: ' + chart);
 	// window.setInterval(addData($('#container').highcharts().series[0], getRndInteger(1,20)), 2000);
 	// addData($('#container').highcharts().series[0], 20);
@@ -99,7 +99,7 @@ function square(containerId) {
 
 		rangeSelector: {
 			allButtonsEnabled: true,
-			selected: 1
+			selected: 5
 		},
 
 		yAxis: {
