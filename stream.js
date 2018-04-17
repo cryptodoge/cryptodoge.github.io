@@ -17,6 +17,17 @@ $(document).ready(function() {
 	});
 
 	square('container');
+
+	// addData($('#container').highcharts(), 'tratatat', 10);
+	// addData($('#container').highcharts(), 'tratatat', 20);
+	// addData($('#container').highcharts(), 'ad', 15);
+	// addData($('#container').highcharts(), 'tratatat', 20);
+	// addData($('#container').highcharts(), 'tratatat', 7);
+	// addData($('#container').highcharts(), 'ad', 17);
+	// addData($('#container').highcharts(), 'tratatat', 3);
+	// addData($('#container').highcharts(), 'tratatat', 14);
+	// addData($('#container').highcharts(), 'ad', 5);
+
 });
 
 function displayData(current, from, to, tsym, fsym) {
@@ -138,19 +149,18 @@ function square(containerId) {
 
 function addData(chart, market, price) {
 	seriaExists = checkExistsSeria(chart.series, market);
-	if (seriaExists)
-		chart.series.forEach(function(seria) {
-			if (seria.name === market)
-				seria.addPoint([new Date().getTime(), price], true, false);
-		});
-	else {
+
+	if (!seriaExists) {
 		chart.addSeries({
 			name: market,
-			data: [
-				[new Date().getTime(), price]
-			]
+			data: []
 		});
 	}
+
+	chart.series.forEach(function(seria) {
+		if (seria.name === market)
+			seria.addPoint([new Date().getTime(), price], true, false);
+	});
 }
 
 function checkExistsSeria(series, name) {
