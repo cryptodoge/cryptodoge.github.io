@@ -158,14 +158,14 @@ function addData(chart, market, price) {
 	}
 
 	chart.series.forEach(function(seria) {
-		if (seria.name === market)
+		if (seria.name == market)
 			seria.addPoint([new Date().getTime(), price], true, false);
 	});
 }
 
 function checkExistsSeria(series, name) {
 	series.forEach(function(seria) {
-		if (seria.name === name) return true;
+		if (seria.name == name) return true;
 	})
 	return false;
 }
