@@ -1,3 +1,5 @@
+var chart;
+
 $(document).ready(function() {
 	var socket = io.connect('https://streamer.cryptocompare.com/');
 	//Format: {SubscriptionId}~{ExchangeName}~{FromSymbol}~{ToSymbol}
@@ -16,7 +18,7 @@ $(document).ready(function() {
 		}
 	});
 
-	square('container');
+	chart = square('container');
 });
 
 function displayData(current, from, to, tsym, fsym) {
@@ -42,7 +44,7 @@ function displayData(current, from, to, tsym, fsym) {
 	}
 
 	if (from === 'BTC' && to === 'USD')
-		seriesOptions.push({
+		addData(chart.series[0], {
 			name: current['LASTMARKET'],
 			data: [new Date().getTime(), current['PRICE']]
 		});
@@ -85,7 +87,10 @@ function dataUnpack(data) {
 var seriesOptions = [];
 
 function square(containerId) {
-	Highcharts.stockChart(containerId, {
+	return Highcharts.stockChart(containerId, {
+		exporting: {
+			enabled: false
+		},
 
 		rangeSelector: {
 			selected: 4
@@ -119,4 +124,8 @@ function square(containerId) {
 
 		series: seriesOptions
 	});
+}
+
+function addData(series, data) {
+	series.addPoint([series.length, data], true, false);
 }
