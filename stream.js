@@ -43,7 +43,7 @@ function displayData(current, from, to, tsym, fsym) {
 
 	if (from === 'BTC' && to === 'USD')
 		seriesOptions.push({
-			name: current['LASTMARKET_DOGE_USD'],
+			name: current['LASTMARKET'],
 			data: [new Date().getTime(), current['PRICE']]
 		});
 
