@@ -16,18 +16,10 @@ $(document).ready(function() {
 		}
 	});
 
-	square('container');
-
-	// addData($('#container').highcharts(), 'tratatat', 10);
-	// addData($('#container').highcharts(), 'tratatat', 20);
-	// addData($('#container').highcharts(), 'ad', 15);
-	// addData($('#container').highcharts(), 'tratatat', 20);
-	// addData($('#container').highcharts(), 'tratatat', 7);
-	// addData($('#container').highcharts(), 'ad', 17);
-	// addData($('#container').highcharts(), 'tratatat', 3);
-	// addData($('#container').highcharts(), 'tratatat', 14);
-	// addData($('#container').highcharts(), 'ad', 5);
-
+	createChart('CHART_DOGE_USD');
+	createChart('CHART_DOGE_BTC');
+	createChart('CHART_BTC_USD');
+	createChart('CHART_ETH_USD');
 });
 
 function displayData(current, from, to, tsym, fsym) {
@@ -52,8 +44,7 @@ function displayData(current, from, to, tsym, fsym) {
 		$('#PRICE_' + from + '_' + to).addClass("down");
 	}
 
-	if (from === 'BTC' && to === 'USD')
-		addData($('#container').highcharts(), current['LASTMARKET'], current['PRICE']);
+	addData($('#CHART_' + from + '_' + to).highcharts(), current['LASTMARKET'], current['PRICE']);
 
 	if (current['PRICE'] > current['OPEN24HOUR']) {
 		$('#CHANGE24HOURPCT_' + from + '_' + to).removeClass();
@@ -90,7 +81,7 @@ function dataUnpack(data) {
 	displayData(currentPrice[pair], from, to, tsym, fsym);
 };
 
-function square(containerId) {
+function createChart(containerId) {
 	Highcharts.stockChart(containerId, {
 		exporting: {
 			enabled: false

@@ -6,10 +6,14 @@ body {
 }
 
 .panel {
-    background-color: rgb(50, 50, 50);
-    width: 305px;
+    display: flex;
+    flex-wrap: nowrap;
+
+    width: 900px;
     margin: 5px;
     padding: 5px;
+
+    background-color: rgb(50, 50, 50);
     border-color: #ddd;
 }
 

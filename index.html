@@ -15,7 +15,7 @@
     <!-- START of container -->
     <div style="display: flex; flex-wrap: wrap; justify-content: center;">
 
-        <div class="panel" style="display: flex; flex-wrap: nowrap; width: 950px">
+        <div class="panel">
             <div style="width: 305px">
                 <h2 class="price-display">DOGE - USD <span class="price" id="PRICE_DOGE_USD"></span></h2>
                 <h5>24h Change: <span id="CHANGE24HOUR_DOGE_USD"></span><span id="CHANGE24HOURPCT_DOGE_USD"></span><br></h5>
@@ -32,10 +32,11 @@
                 <h5>24h Volume: <span id="VOLUME24HOUR_DOGE_USD"></span><br></h5>
                 <h5>24h VolumeTo: <span id="VOLUME24HOURTO_DOGE_USD"></span><br></h5>
             </div>
-            <div id="container" style="flex-grow: 1; height:400px;"></div>
+            <div id="CHART_DOGE_USD" style="flex-grow: 1; height:400px;"></div>
         </div>
 
         <div class="panel">
+            <div style="width: 305px">
             <h2 class="price-display">DOGE - BTC <span class="price" id="PRICE_DOGE_BTC"></span></h2>
             <h5>24h Change: <span id="CHANGE24HOUR_DOGE_BTC"></span><span id="CHANGE24HOURPCT_DOGE_BTC"></span><br></h5>
             <h5>Last Market: <span class="exchange" id="LASTMARKET_DOGE_BTC"></span> <br></h5>
@@ -50,8 +51,12 @@
             <h5>Last Trade Volume To: <span id="LASTVOLUMETO_DOGE_BTC"></span><br></h5>
             <h5>24h Volume: <span id="VOLUME24HOUR_DOGE_BTC"></span><br></h5>
             <h5>24h VolumeTo: <span id="VOLUME24HOURTO_DOGE_BTC"></span><br></h5>
+            </div>
+            <div id="CHART_DOGE_BTC" style="flex-grow: 1; height:400px;"></div>
         </div>
+
         <div class="panel">
+            <div style="width: 305px">
             <h2 class="price-display">BTC - USD <span class="price" id="PRICE_BTC_USD"></span></h2>
             <h5>24h Change: <span id="CHANGE24HOUR_BTC_USD"></span><span id="CHANGE24HOURPCT_BTC_USD"></span><br></h5>
             <h5>Last Market: <span class="exchange" id="LASTMARKET_BTC_USD"></span> <br></h5>
@@ -66,8 +71,12 @@
             <h5>Last Trade Volume To: <span id="LASTVOLUMETO_BTC_USD"></span><br></h5>
             <h5>24h Volume: <span id="VOLUME24HOUR_BTC_USD"></span><br></h5>
             <h5>24h VolumeTo: <span id="VOLUME24HOURTO_BTC_USD"></span><br></h5>
+            </div>
+            <div id="CHART_BTC_USD" style="flex-grow: 1; height:400px;"></div>
         </div>
+
         <div class="panel">
+            <div style="width: 305px">
             <h2 class="price-display">ETH - USD <span class="price" id="PRICE_ETH_USD"></span></h2>
             <h5>24h Change: <span id="CHANGE24HOUR_ETH_USD"></span><span id="CHANGE24HOURPCT_ETH_USD"></span><br></h5>
             <h5>Last Market: <span class="exchange" id="LASTMARKET_ETH_USD"></span> <br></h5>
@@ -82,7 +91,10 @@
             <h5>Last Trade Volume To: <span id="LASTVOLUMETO_ETH_USD"></span><br></h5>
             <h5>24h Volume: <span id="VOLUME24HOUR_ETH_USD"></span><br></h5>
             <h5>24h VolumeTo: <span id="VOLUME24HOURTO_ETH_USD"></span><br></h5>
+            </div>
+            <div id="CHART_ETH_USD" style="flex-grow: 1; height:400px;"></div>
         </div>
+
     </div>
     <!-- END of container -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.js"></script>
