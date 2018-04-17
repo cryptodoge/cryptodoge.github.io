@@ -42,7 +42,7 @@ function displayData(current, from, to, tsym, fsym) {
 	}
 
 	if (from === 'BTC' && to === 'USD')
-		addData($('#container').highcharts().series, current['LASTMARKET'], current['PRICE']);
+		addData($('#container').highcharts(), current['LASTMARKET'], current['PRICE']);
 
 	if (current['PRICE'] > current['OPEN24HOUR']) {
 		$('#CHANGE24HOURPCT_' + from + '_' + to).removeClass();
