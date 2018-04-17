@@ -132,22 +132,19 @@ function square(containerId) {
 			split: true
 		},
 
-		series: [{
-			name: 'tratata',
-			data: []
-		}]
+		series: []
 	});
 }
 
-function addData(series, market, price) {
-	seriaExists = checkExistsSeria(series, market);
+function addData(chart, market, price) {
+	seriaExists = checkExistsSeria(chart.series, market);
 	if (seriaExists)
-		series.forEach(function(seria) {
+		chart.series.forEach(function(seria) {
 			if (seria.name === market)
 				seria.addPoint([new Date().getTime(), price], true, false);
 		});
 	else {
-		series.push({
+		chart.addSeries({
 			name: market,
 			data: [
 				[new Date().getTime(), price]
@@ -157,9 +154,8 @@ function addData(series, market, price) {
 }
 
 function checkExistsSeria(series, name) {
-	result = false;
 	series.forEach(function(seria) {
-		if (seria.name === name) result = true;
+		if (seria.name === name) return true;
 	})
-	return result;
+	return false;
 }
