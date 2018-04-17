@@ -17,13 +17,6 @@ $(document).ready(function() {
 	});
 
 	square('container');
-
-	// var chart = $('#container').highcharts();
-	// console.log('chart: ' + chart);
-	// window.setInterval(addData($('#container').highcharts().series[0], getRndInteger(1,20)), 2000);
-	// addData($('#container').highcharts().series[0], 20);
-	// addData($('#container').highcharts().series[0], 30);
-	// addData($('#container').highcharts().series[0], 40);
 });
 
 function displayData(current, from, to, tsym, fsym) {
@@ -49,12 +42,7 @@ function displayData(current, from, to, tsym, fsym) {
 	}
 
 	if (from === 'BTC' && to === 'USD')
-		addData($('#container').highcharts().series[0], current['PRICE']);
-
-	// addData($('#container').highcharts().series[0], {
-	// 	name: current['LASTMARKET'],
-	// 	data: [new Date().getTime(), current['PRICE']]
-	// });
+		addData($('#container').highcharts().series, current['LASTMARKET'], current['PRICE']);
 
 	if (current['PRICE'] > current['OPEN24HOUR']) {
 		$('#CHANGE24HOURPCT_' + from + '_' + to).removeClass();
@@ -99,7 +87,23 @@ function square(containerId) {
 
 		rangeSelector: {
 			allButtonsEnabled: true,
-			selected: 5
+			buttons: [{
+				type: 'minute',
+				count: 1,
+				text: '1m'
+			}, {
+				type: 'minute',
+				count: 3,
+				text: '3m'
+			}, {
+				type: 'minute',
+				count: 6,
+				text: '6m'
+			}, {
+				type: 'all',
+				text: 'All'
+			}],
+			selected: 2
 		},
 
 		yAxis: {
@@ -135,10 +139,15 @@ function square(containerId) {
 	});
 }
 
-function addData(series, data) {
-	series.addPoint([new Date().getTime(), data], true, false);
-}
-
-function getRndInteger(min, max) {
-    return Math.floor(Math.random() * (max - min) ) + min;
+function addData(series, market, price) {
+	series.forEach(function(seria) {
+		if (seria.name === market)
+			seria.addPoint([new Date().getTime(), price], true, false);
+		else{
+			series.push({
+				name: market,
+				data: [[new Date().getTime(), price]]
+			});
+		}
+	});
 }
