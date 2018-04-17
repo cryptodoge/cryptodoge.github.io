@@ -108,6 +108,10 @@ function createChart(containerId) {
 			selected: 3
 		},
 
+		legend: {
+			enabled: true
+		},
+
 		yAxis: {
 			labels: {
 				formatter: function() {
@@ -123,6 +127,7 @@ function createChart(containerId) {
 
 		plotOptions: {
 			series: {
+				animation: false,
 				compare: 'percent',
 				showInNavigator: true
 			}
@@ -132,6 +137,10 @@ function createChart(containerId) {
 			pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.change}%)<br/>',
 			valueDecimals: 2,
 			split: true
+		},
+
+		scrollbar: {
+			enabled: false
 		},
 
 		series: []
