@@ -159,7 +159,7 @@ function addData(series, market, price) {
 function checkExistsSeria(series, name) {
 	result = false;
 	series.forEach(function(seria) {
-		if (seria.name === name) result true;
+		if (seria.name === name) result = true;
 	})
 	return result;
 }
